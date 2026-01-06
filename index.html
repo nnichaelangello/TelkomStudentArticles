@@ -3,40 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English 2 Articles - IT-05-02</title>
+    <title>English 2 Student Portfolio - IT-05-02</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
         
         .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .card-hover:hover::before {
+            opacity: 1;
         }
         
         .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .card-hover:hover .card-image {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .card-image {
-            transition: transform 0.6s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .fade-in {
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.8s ease-out;
         }
         
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -49,30 +75,55 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
         }
 
         .float-animation {
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .telkom-gradient {
+            background: linear-gradient(135deg, #ee0a24 0%, #c2002f 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .article-content {
-            line-height: 1.9;
+            line-height: 1.8;
         }
 
         .article-content h2 {
-            font-size: 1.75rem;
+            font-size: 1.875rem;
             font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1.25rem;
-            color: #1f2937;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.025em;
         }
 
         .article-content p {
             margin-bottom: 1.5rem;
-            color: #4b5563;
-            font-size: 1.075rem;
+            color: #374151;
+            font-size: 1.125rem;
+        }
+
+        .article-content ol, .article-content ul {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+            color: #374151;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
         }
 
         .gradient-text {
@@ -82,229 +133,267 @@
             background-clip: text;
         }
 
-        .telkom-gradient {
-            background: linear-gradient(135deg, #ee0a24 0%, #c2002f 100%);
+        .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
         }
 
-        .card-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+        .pdf-container {
+            width: 100%;
+            height: 700px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid #e5e7eb;
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 4rem 0;
+        }
+
+        .assignment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .assignment-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .hero-pattern {
+            background-color: #f9fafb;
+            background-image: radial-gradient(circle at 1px 1px, #e5e7eb 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .article-content p {
+                font-size: 1rem;
+            }
+        }
+
+        .student-card-name {
+            transition: color 0.3s ease;
+        }
+
+        .card-hover:hover .student-card-name {
+            color: #ee0a24;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.min.mjs" type="module"></script>
+    <!-- Di dalam <head> -->
+    <script type="module">
+        import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.min.mjs';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.7.76/pdf.worker.min.mjs';
+    </script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+<body class="bg-gray-50">
     <!-- Landing Page -->
     <div id="landing-page" class="min-h-screen">
-        <!-- Header -->
-        <!-- <header class="bg-white/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b-4 telkom-gradient border-opacity-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="text-center md:text-left">
-                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">English 2 Article Collection</h1>
-                        <p class="text-sm md:text-base text-red-600 font-semibold">IT-05-02 | Telkom University Surabaya</p>
-                    </div>
-                    <div class="text-center md:text-right">
-                        <p class="text-gray-600 font-medium">Academic Year 2025/2026</p>
-                        <p class="text-sm text-gray-500">English 2 Course</p>
-                    </div>
-                </div>
-            </div>
-        </header> -->
-
         <!-- Hero Section -->
-        <section class="relative overflow-hidden py-20 md:py-28">
+        <section class="relative overflow-hidden hero-pattern py-20 md:py-32">
             <div class="absolute inset-0 telkom-gradient opacity-5"></div>
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="float-animation inline-block mb-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl shadow-2xl flex items-center justify-center transform rotate-12">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="float-animation inline-block mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-3xl shadow-2xl flex items-center justify-center transform rotate-6 hover:rotate-12 transition-transform duration-500">
+                            <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
                     </div>
-                </div>
-                <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
-                    <span class="gradient-text">Explore Our</span>
-                    <br/>
-                    <span class="text-gray-900">Student Articles</span>
-                </h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-                    A curated collection of insightful articles crafted by talented students from 
-                    <span class="font-bold text-red-600">IT-05-02 Class</span>
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 text-sm">
-                    <div class="bg-white px-6 py-3 rounded-full shadow-lg">
-                        <span class="font-semibold text-red-600">📚 English 2 Assignment</span>
-                    </div>
-                    <div class="bg-white px-6 py-3 rounded-full shadow-lg">
-                        <span class="font-semibold text-gray-700">🎓 Telkom University Surabaya</span>
+                    
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                        <span class="gradient-text">Student Portfolio</span>
+                        <br/>
+                        <span class="text-gray-900">Collection</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+                        Explore outstanding assignments and projects from talented students of 
+                        <span class="font-bold text-red-600">IT-05-02 Class</span>
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="assignment-badge bg-white shadow-lg">
+                            <span class="text-2xl">📚</span>
+                            <span class="text-red-600">English 2 Assignment</span>
+                        </div>
+                        <div class="assignment-badge bg-white shadow-lg">
+                            <span class="text-2xl">🎓</span>
+                            <span class="text-gray-700">Telkom University Surabaya</span>
+                        </div>
+                        <div class="assignment-badge bg-white shadow-lg">
+                            <span class="text-2xl">👥</span>
+                            <span class="text-gray-700">4 Students</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Cards Grid -->
-        <section class="mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Featured Articles</h3>
-                <div class="w-24 h-1 telkom-gradient mx-auto rounded-full"></div>
+        <!-- Student Cards Grid -->
+        <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Meet Our Students</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                    Talented individuals showcasing their best work
+                </p>
+                <div class="w-24 h-1.5 telkom-gradient mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="card-hover bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-red-500" onclick="showArticle(1)">
-                    <!-- Card Cover: Recommended 800x600px (4:3 ratio) for card thumbnails -->
-                    <div class="relative h-56 overflow-hidden bg-gray-200">
-                        <img src="https://admin.anatomy.app/Media/images/077e000d-34b9-48c6-9c99-15ea09c40d4b_large.jpg" 
-                             alt="Article 1 Cover" 
+                <!-- Student Card 1 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer" onclick="showStudentPortfolio(1)">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                        <img src="./author1.png" 
+                             alt="Student 1" 
                              class="card-image w-full h-full object-cover">
                         <div class="absolute inset-0 card-overlay"></div>
                     </div>
                     <div class="p-6">
-                        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold mb-3">
-                            Technology
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition">
-                            From Medicine to Machine Learning: Transforming Healthcare through Artificial Intelligence
+                        <h3 class="student-card-name text-xl font-bold text-gray-900 mb-3 leading-tight">
+                            Michael Angello Q. R.
                         </h3>
-                        <div class="space-y-2 text-sm">
-                            <p class="font-bold text-gray-800 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                </svg>
-                                Michael Angello Q. R.
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                NIM: 1202230014
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                                </svg>
-                                Class: IT-05-02
-                            </p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">1202230014</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">IT-05-02</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="card-hover bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-red-500" onclick="showArticle(2)">
-                    <!-- Card Cover: Recommended 800x600px (4:3 ratio) for card thumbnails -->
-                    <div class="relative h-56 overflow-hidden bg-gray-200">
-                        <img src="https://welshwomensaid.org.uk/wp-content/uploads/2024/02/SVAW-2024.jpg" 
-                             alt="Article 2 Cover" 
+                <!-- Student Card 2 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer" onclick="showStudentPortfolio(2)">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                        <img src="./author2.png" 
+                             alt="Student 2" 
                              class="card-image w-full h-full object-cover">
                         <div class="absolute inset-0 card-overlay"></div>
                     </div>
                     <div class="p-6">
-                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold mb-3">
-                            Social Issues
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition">
-                            Integration of Sexual Violence Reporting into Website Platforms
+                        <h3 class="student-card-name text-xl font-bold text-gray-900 mb-3 leading-tight">
+                            Nur Alifia Rustan
                         </h3>
-                        <div class="space-y-2 text-sm">
-                            <p class="font-bold text-gray-800 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                </svg>
-                                Nur Alifia Rustan
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                NIM: 1202230008
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                                </svg>
-                                Class: IT-05-02
-                            </p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">1202230008</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">IT-05-02</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="card-hover bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-red-500" onclick="showArticle(3)">
-                    <!-- Card Cover: Recommended 800x600px (4:3 ratio) for card thumbnails -->
-                    <div class="relative h-56 overflow-hidden bg-gray-200">
-                        <img src="https://media.wired.com/photos/668d9761f48e4b3cc92f60e6/16:9/w_1920,h_1080,c_limit/AI-Classroom-Culture-1516288091.jpg" 
-                             alt="Article 3 Cover" 
+                <!-- Student Card 3 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer" onclick="showStudentPortfolio(3)">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                        <img src="./author3.png" 
+                             alt="Student 3" 
                              class="card-image w-full h-full object-cover">
                         <div class="absolute inset-0 card-overlay"></div>
                     </div>
                     <div class="p-6">
-                        <div class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold mb-3">
-                            Education
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition">
-                            The Positive Impact of Artificial Intelligence on Human Life, Especially in Education
+                        <h3 class="student-card-name text-xl font-bold text-gray-900 mb-3 leading-tight">
+                            Ardine Hardiyanto P.
                         </h3>
-                        <div class="space-y-2 text-sm">
-                            <p class="font-bold text-gray-800 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                </svg>
-                                Hardiyanto Pratama
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                NIM: 1202230012
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                                </svg>
-                                Class: IT-05-02
-                            </p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">1202230012</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">IT-05-02</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="card-hover bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-red-500" onclick="showArticle(4)">
-                    <!-- Card Cover: Recommended 800x600px (4:3 ratio) for card thumbnails -->
-                    <div class="relative h-56 overflow-hidden bg-gray-200">
-                        <img src="https://blog-uploads.eneba.games/uploads/2025/08/roblox-vs-minecraft.jpg" 
-                             alt="Article 4 Cover" 
+                <!-- Student Card 4 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer" onclick="showStudentPortfolio(4)">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                        <img src="./author4.png" 
+                             alt="Student 4" 
                              class="card-image w-full h-full object-cover">
                         <div class="absolute inset-0 card-overlay"></div>
                     </div>
                     <div class="p-6">
-                        <div class="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold mb-3">
-                            Gaming
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition">
-                            How Online Games Enhance Creativity
+                        <h3 class="student-card-name text-xl font-bold text-gray-900 mb-3 leading-tight">
+                            Hikmah Khaliq A. P.
                         </h3>
-                        <div class="space-y-2 text-sm">
-                            <p class="font-bold text-gray-800 flex items-center">
-                                <svg class="w-4 h-4 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                </svg>
-                                Hikmah Khaliq A. P.
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                                </svg>
-                                NIM: 1202230011
-                            </p>
-                            <p class="text-gray-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                                </svg>
-                                Class: IT-05-02
-                            </p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                        <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">1202230011</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-medium">IT-05-02</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -312,442 +401,669 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-gray-900 text-white py-12">
+        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h3 class="text-2xl font-bold mb-3">English 2 Course Project</h3>
-                    <p class="text-gray-400 mb-4">Class IT-05-02 | Telkom University Surabaya</p>
-                    <div class="w-16 h-1 telkom-gradient mx-auto rounded-full mb-6"></div>
-                    <p class="text-gray-500 text-sm">&copy; 2025 IT-05-02. All rights reserved.</p>
+                    <div class="mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">English 2 Course Project</h3>
+                    <p class="text-gray-400 mb-6">Class IT-05-02 | Telkom University Surabaya</p>
+                    <div class="w-20 h-1 telkom-gradient mx-auto rounded-full mb-6"></div>
+                    <p class="text-gray-500 text-sm">&copy; Michael Angello Qadosy Riyadi. All rights reserved.</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Article Page (Hidden by default) -->
-    <div id="article-page" class="hidden min-h-screen">
-        <!-- Article Header -->
-        <header class="bg-white/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b-4 telkom-gradient border-opacity-20">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <button onclick="backToHome()" class="group flex items-center text-white-600 hover:text-white-700 font-semibold transition-all">
-                    <svg class="w-6 h-6 mr-2 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
+    <!-- Student Portfolio Page -->
+    <div id="portfolio-page" class="hidden min-h-screen bg-gray-50">
+        <header class="glass-effect sticky top-0 z-50 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <button onclick="backToHome()" class="group inline-flex items-center text-gray-700 hover:text-gray-900 font-semibold transition-all">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mr-3 group-hover:bg-red-100 transition-colors">
+                        <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                    </div>
                     Back to Home
                 </button>
             </div>
         </header>
 
-        <!-- Article Content -->
-        <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <!-- Article Cover: Recommended 1920x1080px (16:9 ratio) for featured article images -->
-            <div class="w-full rounded-3xl overflow-hidden shadow-2xl mb-10">
-                <img id="article-cover" 
-                     src="https://via.placeholder.com/1920x1080/3b82f6/ffffff?text=Article+Featured+Image" 
-                     alt="Article Cover" 
-                     class="w-full h-auto object-cover">
-            </div>
-
-            <!-- Article Category Badge -->
-            <div class="mb-4">
-                <span id="article-category" class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
-                    Technology
-                </span>
-            </div>
-
-            <!-- Article Title & Meta -->
-            <div class="mb-10">
-                <h1 id="article-title" class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">Article Title</h1>
-                <div class="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span id="article-author" class="font-semibold">Author Name</span>
-                    </div>
-                    <span class="text-gray-400">•</span>
-                    <!-- <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span>5 min read</span>
-                    </div>
-                    <span class="text-gray-400">•</span> -->
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>January 5, 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Article Body -->
-            <div id="article-body" class="article-content prose prose-lg max-w-none bg-white rounded-2xl p-8 shadow-lg">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                <h2>Introduction</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-                <h2>Main Content</h2>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
-
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-
-                <h2>Conclusion</h2>
-                <p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-            </div>
-
-            <!-- Author Bio Section -->
-            <div class="mt-16 border-t-2 border-gray-200 pt-12">
-                <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                    <svg class="w-8 h-8 mr-3 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                    </svg>
-                    About the Author
-                </h3>
-                <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 border border-gray-100">
-                    <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <!-- Author Photo: Recommended 400x400px (1:1 ratio - square) for profile pictures -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <!-- Student Profile -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden mb-16">
+                <div class="bg-gradient-to-r from-red-500 to-red-600 h-32"></div>
+                <div class="px-8 pb-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-start -mt-16">
                         <div class="flex-shrink-0">
-                            <img id="author-photo" 
-                                 src="https://via.placeholder.com/400x400/3b82f6/ffffff?text=Author" 
-                                 alt="Author Photo" 
-                                 class="w-40 h-40 rounded-2xl object-cover shadow-xl border-4 border-white">
+                            <img id="student-photo" 
+                                 src="" 
+                                 alt="Student Photo" 
+                                 class="w-32 h-32 rounded-2xl object-cover shadow-2xl border-4 border-white">
                         </div>
-                        <div class="flex-1">
-                            <h4 id="author-name" class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Author Name</h4>
-                            <div class="flex flex-wrap gap-3 mb-5">
-                                <span id="author-nim" class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                        <div class="flex-1 mt-16 md:mt-0">
+                            <h1 id="student-name" class="text-4xl font-black text-gray-900 mb-4"></h1>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <span id="student-nim" class="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-xl text-sm font-semibold border border-blue-100">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                                         <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
                                     </svg>
-                                    NIM: 123456789
+                                    NIM: 
                                 </span>
-                                <span id="author-class" class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                                <span id="student-class" class="inline-flex items-center px-4 py-2 bg-red-50 text-red-700 rounded-xl text-sm font-semibold border border-red-100">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+                                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
                                     </svg>
                                     Class: IT-05-02
                                 </span>
-                                <span class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Telkom University Surabaya
-                                </span>
                             </div>
-                            <p id="author-bio" class="text-gray-700 leading-relaxed text-base">
-                                A passionate student with a keen interest in technology and innovation. Currently pursuing a degree in Information Technology at Telkom University Surabaya and actively contributing to various academic and extracurricular projects. Dedicated to continuous learning and sharing knowledge with the community.
-                            </p>
+                            <p id="student-bio" class="text-gray-600 leading-relaxed text-lg"></p>
                         </div>
                     </div>
                 </div>
             </div>
-        </article>
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 text-white py-12 mt-16">
+            <!-- Assignments Section -->
+            <div class="mb-12">
+                <h2 class="text-4xl font-black text-gray-900 mb-3">Assignments</h2>
+                <p class="text-lg text-gray-600">Click on any card to view the full content</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="assignment-cards">
+                <!-- Assignment cards will be generated dynamically -->
+            </div>
+        </section>
+
+        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 mt-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h3 class="text-2xl font-bold mb-3">English 2 Course Project</h3>
-                    <p class="text-gray-400 mb-4">Class IT-05-02 | Telkom University Surabaya</p>
-                    <div class="w-16 h-1 telkom-gradient mx-auto rounded-full mb-6"></div>
+                    <div class="mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">English 2 Course Project</h3>
+                    <p class="text-gray-400 mb-6">Class IT-05-02 | Telkom University Surabaya</p>
+                    <div class="w-20 h-1 telkom-gradient mx-auto rounded-full mb-6"></div>
                     <p class="text-gray-500 text-sm">&copy; 2025 IT-05-02. All rights reserved.</p>
                 </div>
             </div>
         </footer>
     </div>
 
+    <!-- Assignment Content Page -->
+    <div id="assignment-page" class="hidden min-h-screen bg-gray-50">
+        <header class="glass-effect sticky top-0 z-50 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <button onclick="backToPortfolio()" class="group inline-flex items-center text-gray-700 hover:text-gray-900 font-semibold transition-all">
+                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center mr-3 group-hover:bg-red-100 transition-colors">
+                        <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                    </div>
+                    Back to Portfolio
+                </button>
+            </div>
+        </header>
+
+        <article class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="mb-12">
+                <h1 id="assignment-title" class="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight"></h1>
+                <div class="flex flex-wrap items-center gap-4 text-gray-600">
+                    <div class="flex items-center bg-gray-100 px-4 py-2 rounded-xl">
+                        <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span id="assignment-author" class="font-semibold"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div id="assignment-content" class="bg-white rounded-3xl p-10 shadow-xl">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </article>
+
+        <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 mt-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-2xl mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">English 2 Course Project</h3>
+                    <p class="text-gray-400 mb-6">Class IT-05-02 | Telkom University Surabaya</p>
+                    <div class="w-20 h-1 telkom-gradient mx-auto rounded-full mb-6"></div>
+                    <p class="text-gray-500 text-sm">&copy; 2025 IT-05-02. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
     <script>
-        // Article data structure
-        const articles = {
+        let currentStudentId = null;
+        
+        const studentsData = {
             1: {
-                title: "From Medicine to Machine Learning: Transforming Healthcare through Artificial Intelligence",
-                author: "Michael Angello Qadosy Riyadi",
+                name: "Michael Angello Qadosy Riyadi",
                 nim: "1202230014",
                 class: "IT-05-02",
-                category: "Technology",
-                categoryColor: "bg-blue-100 text-blue-700",
-                cardCover: "https://news.harvard.edu/wp-content/uploads/2025/03/Findings-AI-in-medicine-resize.png", // Updated to relevant AI in healthcare cover
-                articleCover: "https://admin.anatomy.app/Media/images/077e000d-34b9-48c6-9c99-15ea09c40d4b_large.jpg", // Featured image for the article
-                authorPhoto: "./author1.png",
-                bio: "A passionate Information Technology student with a deep interest in machine learning, particularly its applications in healthcare. Currently studying at Telkom University Surabaya, I am actively exploring how AI can improve diagnostics, treatment, and patient outcomes. Committed to continuous learning and contributing to innovative solutions that make healthcare more accessible and effective.",
-                content: `
-                    <p>Artificial Intelligence (AI) is rapidly revolutionizing the healthcare industry. Advanced algorithms enable earlier disease detection, more effective treatments, and improved patient outcomes. This article explores the significant benefits AI offers to modern medicine, while also addressing the challenges that must be overcome to ensure its responsible implementation. By examining AI's role in clinical practice and its potential risks, we can better understand how to harness this technology for a safer and more equitable healthcare system.</p>
+                photo: "./author1.png",
+                coverImage: "./author1.png",
+                bio: "Michael Angello Qadosy Riyadi is a dedicated Information Technology student at Telkom University Surabaya, born on February 20, 2004, in Tuban, East Java. With a strong passion for machine learning and its applications in healthcare, he actively serves as a practicum assistant, supporting lecturers' research and engaging in community service projects that blend academic growth with social impact. Personally committed to innovation, he shares his technological interests with his girlfriend and aspires to a stable career in tech while building a fulfilling family life.",
+                assignments: [
+                    {
+                        id: 'intro',
+                        title: "Create a Self-Introduction PARAGRAPH",
+                        type: "text",
+                        icon: "👤",
+                        color: "from-blue-500 to-blue-600",
+                        content: `
+                            <h2>Personal Background</h2>
+                            <p>At 21, born on February 20, 2004, in Tuban, East Java, Indonesia, I am pursuing a university degree in the same technology-focused program as my girlfriend, Adinda Mariasti Dewi, which strengthens our shared passion for innovation.</p>
 
-                    <grok-card data-id="9ace5c" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Academic Interests</h2>
+                            <p>Recently, I have developed a keen interest in writing research articles on machine learning, a field that captivates me with its potential to transform industries.</p>
 
+                            <h2>Academic and Social Contributions</h2>
+                            <p>As a practicum assistant, I support my lecturers’ research initiatives and participate in community service, which not only deepens my understanding but also allows me to contribute meaningfully to society.</p>
 
+                            <h2>Personal Fulfillment</h2>
+                            <p>These experiences are immensely rewarding, as they combine academic growth with social impact.</p>
 
-                    <grok-card data-id="0dbc4b" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Aspirations</h2>
+                            <p>My aspirations are twofold: professionally, I aim to secure a stable career in my field after graduation, applying my expertise to drive technological advancements, personally, I dream of marrying Adinda and building a fulfilling life together, united by our shared interests and ambitions.</p>
 
+                            <h2>Commitment to Growth</h2>
+                            <p>To achieve these goals, I dedicate myself to my studies, consistently honing my skills through coursework and independent reading on cutting-edge technologies.</p>
 
-                            <h2>The Benefits of AI in Healthcare</h2>
-                            <p>AI significantly enhances diagnostic accuracy and speed. In medical imaging, such as X-rays and MRIs, AI systems can identify subtle indicators of conditions like cancer that might escape human observation, often achieving higher precision than experienced radiologists. This capability leads to earlier interventions and saves countless lives annually.</p>
-
-                    <grok-card data-id="df9799" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <p>Additionally, AI supports personalized medicine by analyzing genetic information, lifestyle factors, and medical histories to tailor treatments for individual patients. This approach minimizes adverse effects and accelerates recovery. In hospital settings, AI automates administrative tasks, including documentation, scheduling, and insurance processing, freeing healthcare professionals to focus more on patient care.</p>
-
-                            <p>AI-powered robotic systems assist in surgeries, providing unparalleled steadiness and precision, resulting in minimally invasive procedures, reduced pain, and shorter hospital stays. Furthermore, AI extends quality care to remote and underserved areas through mobile applications and portable devices that monitor vital signs and alert physicians to potential issues in real time.</p>
-
-                    <grok-card data-id="52e6ba" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <h2>The Challenges of AI in Healthcare</h2>
-                            <p>Despite its advantages, AI presents notable challenges. One primary concern is algorithmic bias, where systems trained predominantly on data from specific demographic groups perform less effectively for others, potentially leading to disparities in care across diverse populations.</p>
-
-                    <grok-card data-id="b312e6" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-
-                    <grok-card data-id="4516c3" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <p>Patient privacy is another critical issue, as the vast amounts of sensitive health data required for AI training increase vulnerability to breaches. Many AI models operate as "black boxes," offering recommendations without clear explanations, which complicates accountability when errors occur.</p>
-
-                            <p>There are also concerns that over-reliance on AI might diminish critical thinking among newer generations of physicians, given that medicine combines scientific knowledge with clinical experience and empathy. Finally, the high costs associated with advanced AI tools can exacerbate inequalities, as well-resourced institutions adopt them while smaller facilities lag behind.</p>
-
-                            <h2>Achieving Balance: Human-AI Collaboration</h2>
-                            <p>The most effective approach involves integrating AI as a supportive tool under human oversight. Physicians should remain in control, using AI insights to inform decisions while applying their expertise and considering patient preferences.</p>
-
-                    <grok-card data-id="694008" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-
-                    <grok-card data-id="a0a37d" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <p>Developing explainable AI systems that provide transparent reasoning will build trust. Comprehensive education for healthcare professionals on AI's capabilities and limitations is essential. Governments and regulatory bodies should establish robust guidelines to ensure data security, diverse training datasets, and algorithmic transparency. By adopting inclusive policies and affordable technologies, AI can bridge gaps and deliver high-quality care to all communities.</p>
-
-                            <h2>Conclusion</h2>
-                            <p>AI is ushering in a transformative era for healthcare, offering faster and more accurate diagnostics, personalized therapies, and streamlined operations. However, addressing issues like bias, privacy, accountability, and accessibility is crucial. The future lies in harmonious collaboration between humans and machines, guided by ethical standards, thorough training, and a patient-centered focus. With careful stewardship, AI has the potential to create a healthier, more inclusive world for everyone.</p>
+                            <h2>Closing</h2>
+                            <p>This journey fuels my motivation to grow both as a scholar and as an individual. Thank you for taking the time to read my story. I hope it provides a clear glimpse into my passions, aspirations, and the path I am forging toward a bright future.</p>
                         `
-                },
+                    },
+                    {
+                        id: 'review',
+                        title: "Review or Summary of a Journal Article",
+                        type: "pdf",
+                        icon: "📄",
+                        color: "from-green-500 to-green-600",
+                        pdfUrl: "https://drive.google.com/file/d/1XuBeZpNY-NBXhMRkfh46mVPTMzLfK-yE/preview"
+                    },
+                    {
+                        id: 'essay',
+                        title: "Final Written Essay Submission",
+                        type: "text",
+                        icon: "📝",
+                        color: "from-purple-500 to-purple-600",
+                        content: `
+                            <h2>From Medicine to Machine Learning: Transforming Healthcare through Artificial Intelligence</h2>
+                            
+                            <h2>Introduction</h2>
+                            <p>Artificial Intelligence (AI) is changing healthcare very fast now. Doctors use computers to find diseases earlier, choose better treatments, and help people live longer (Javaid et al., 2022). This essay wants to show the good things that AI brings to medicine and also the problems we must fix. We will look at how AI helps doctors every day and how it can hurt people if we are not careful. In the end, if we use AI the right way, healthcare can become safer and fairer for everyone.</p>
+                            
+                            <h2>Body Paragraph 1 – The Good Things about AI in Healthcare</h2>
+                            <p>AI helps doctors find diseases much faster and more correctly, with studies showing up to 94% accuracy in detecting lung nodules outperforming human radiologists at 65%. When doctors look at X-ray or MRI pictures, AI can see very small signs of cancer that human eyes sometimes miss (Wu et al., 2024). Many studies say AI can find skin cancer or breast cancer as good as expert doctors or even better (Awan et al., 2024). This early finding saves many lives every year. AI also makes treatment just for one person by looking at genes, lifestyle, and old health records (Baig et al., 2024). Because of this, patients have fewer bad side effects and get better quicker. In hospitals, AI does boring jobs like writing notes, making appointments, and checking insurance, so doctors and nurses have more time to care for patients. AI robots help in surgery too, they move very steady and make small cuts, so patients feel less pain and go home sooner (Alowais et al., 2023). Even people who live far from big hospitals can get help now. With phone apps and simple tools, AI checks blood pressure or sugar levels and tells the doctor fast if something is wrong. This brings good healthcare to villages and poor places.</p>
+                            
+                            <h2>Body Paragraph 2 – The Problems of AI in Healthcare</h2>
+                            <p>But AI has big problems too, the biggest problem is bias. If we teach AI only with data from white people or rich people, it will not work well for others, with studies showing AI skin cancer detection tools can be up to 20% less accurate on dark skin tones due to underrepresentation in training data (Araf et al., 2024). For example, some skin-cancer tools worked very badly on dark skin because they learned mostly from light skin pictures. This is not fair at all. Another problem is privacy because health information is very secret (Liu et al., 2024). When we put millions of patient records in computers, bad people can try to steal them, and we already had many big data attacks in hospitals, including 745 large-scale breaches in the US healthcare sector in 2023 alone. Many AI systems are like black boxes. They give an answer, but doctors cannot understand how they found that answer (Xu & Shuttleworth, 2024). When something goes wrong, nobody knows who is responsible – the doctor or the machine. Also, some doctors worry that young doctors will stop thinking hard if they always follow the computer (Beger, 2025). Medicine is not only science, it is art and experience too. The last problem is money because big hospitals can buy expensive AI, but small clinics cannot (Prajwal et al., 2025). This makes the difference between rich and poor hospitals bigger.</p>
+                            
+                            <h2>Body Paragraph 3 – Finding the Right Balance: Humans + AI</h2>
+                            <p>The best way is to put humans and AI together. Doctors must always be the boss, and AI only gives suggestions that doctors check with their own knowledge and with the patient. We need AI that can explain its answers in simple words, and new tools called explainable AI are coming to help (Sadeghi et al., 2024). Every doctor and nurse must learn how to use AI the right way, so universities and hospitals should teach about AI limits and dangers, not only how to turn it on. Governments must make strong rules that say data must be safe, AI must be tested on all kinds of people, and companies must show how their AI works (Taufiq & Kenyo, 2025). Europe already has good rules called GDPR, and other countries can learn from them. With good rules and good training, AI can help everyone, not only rich people in big cities. Telemedicine and cheap AI phones can bring expert help to every village one day.</p>
+                            
+                            <h2>Conclusion</h2>
+                            <p>AI is opening a new time for healthcare. It makes diagnoses faster and more correct, treatments more personal, and hospitals work better. But we must fix bias, protect privacy, keep doctors in control, and make sure poor people also get the good things. The future is not doctors against machines, the future is doctors and machines working like friends. If we make strong rules, teach everyone well, and always remember that patients are real humans and not just data, then AI will help us build a healthier world for all people.</p>
+                            
+                            <h2>References</h2>
+                            <ol>
+                                <li>Alowais, S. A., Alghamdi, S. S., Alsuhebany, N., Alkholaiwi, F. O., Almuqati, S. F., Alosaimi, A. F., Almodayfer, O. I., Alkhamis, A. S., Alkhazi, A. S., Alzamil, A. A., Alhawassi, T. M., Alawaji, A. A., & Alghunaim, I. S. (2023). Revolutionizing healthcare: The role of artificial intelligence in clinical practice. <em>BMC Medical Education</em>, <em>23</em>(1), 689. https://doi.org/10.1186/s12909-023-04698-z</li>
+                                <li>Araf, I., Idri, A., & Chairi, I. (2024). Cost-sensitive learning for imbalanced medical data: A review. <em>Artificial Intelligence Review</em>, <em>57</em>, 80. https://doi.org/10.1007/s10462-023-10652-8</li>
+                                <li>Awan, M. Z., Zain, M., & Abodayeh, K. (2024). Comparative analysis of machine learning models for breast cancer prediction and diagnosis: A dual-dataset approach. <em>Indonesian Journal of Electrical Engineering and Computer Science</em>, <em>Vol.34</em>, 2032–2044. https://doi.org/10.11591/ijeecs.v34.i3.pp2032-2044</li>
+                                <li>Baig, M. M., Hobson, C., GholamHosseini, H., Ullah, E., & Afifi, S. (2024). Generative AI in Improving Personalized Patient Care Plans: Opportunities and Barriers Towards Its Wider Adoption. <em>Applied Sciences</em>, <em>14</em>(23), 10899. https://doi.org/10.3390/app142310899</li>
+                                <li>Beger, J. (2025). Not someone, but something: Rethinking trust in the age of medical AI. <em>European Journal of Radiology Artificial Intelligence</em>, <em>3</em>, 100038. https://doi.org/10.1016/j.ejrai.2025.100038</li>
+                                <li>Javaid, M., Haleem, A., Singh, R. P., Suman, R., & Rab, S. (2022). Significance of machine learning in healthcare: Features, pillars and applications. <em>International Journal of Intelligent Networks</em>, <em>3</em>, 58–73. https://doi.org/10.1016/j.ijin.2022.05.002</li>
+                                <li>Liu, W., Zhang, Y., Yang, H., & others. (2024). A Survey on Differential Privacy for Medical Data Analysis. <em>Annals of Data Science</em>, <em>11</em>, 733–747. https://doi.org/10.1007/s40745-023-00475-3</li>
+                                <li>Prajwal, R., Pawan, S. J., Nazarian, S., Heller, N., Weight, C. J., Duddalwar, V., & Kuo, C.-J. (2025). A Study on Energy Consumption in AI-Driven Medical Image Segmentation. <em>Journal of Imaging</em>, <em>11</em>(6), 174. https://doi.org/10.3390/jimaging11060174</li>
+                                <li>Sadeghi, Z., Alizadehsani, R., CIFCI, M. A., Kausar, S., Rehman, R., Mahanta, P., Bora, P. K., Almasri, A., Alkhawaldeh, R. S., Hussain, S., Alatas, B., Shoeibi, A., Moosaei, H., Hladík, M., Nahavandi, S., & Pardalos, P. M. (2024). A review of Explainable Artificial Intelligence in healthcare. <em>Computers and Electrical Engineering</em>, <em>118</em>, 109370. https://doi.org/10.1016/j.compeleceng.2024.109370</li>
+                                <li>Taufiq, M., & Kenyo, A. S. (2025). The Legal Protection of Personal Data in the Digital Era: A Comparative Study of Indonesian Law and the GDPR. <em>International Journal of Business, Law, and Education</em>, <em>6</em>(2), 1260–1268. https://doi.org/10.56442/ijble.v6i2.1178</li>
+                                <li>Wu, X., Lin, Z., Deng, J., & others. (2024). Nonmasking-based reservoir computing with a single dynamic memristor for image recognition. <em>Nonlinear Dynamics</em>, <em>112</em>, 6663–6678. https://doi.org/10.1007/s11071-024-09338-9</li>
+                                <li>Xu, H., & Shuttleworth, K. M. J. (2024). Medical artificial intelligence and the black box problem: A view based on the ethical principle of “do no harm.” <em>Intelligent Medicine</em>, <em>4</em>(1), 52–57. https://doi.org/10.1016/j.imed.2023.08.001</li>
+                            </ol>
+                        `
+                    },
+                    {
+                        id: 'slides',
+                        title: "Presentation Slides",
+                        type: "pdf",
+                        icon: "🎤",
+                        color: "from-orange-500 to-orange-600",
+                        pdfUrl: "https://drive.google.com/file/d/1S7D_u5SRIFfFLuw3uSBDF3Z3PH1GczjM/preview"
+                    }
+                ]
+            },
             2: {
-                title: "Integration of Sexual Violence Reporting into Website Platforms",
-                author: "Nur Alifia Rustan",
+                name: "Nur Alifia Rustan",
                 nim: "1202230008",
                 class: "IT-05-02",
-                category: "Social Issues",
-                categoryColor: "bg-purple-100 text-purple-700",
-                cardCover: "https://welshwomensaid.org.uk/wp-content/uploads/2024/02/SVAW-2024.jpg", // Sensitive awareness campaign image, 800x600px ratio
-                articleCover: "https://welshwomensaid.org.uk/wp-content/uploads/2024/02/SVAW-2024.jpg", // Empowering support message, wide format for featured
-                authorPhoto: "./author2.png", // You can replace with ./author2.png if available locally
-                bio: "A dedicated student passionate about social justice, women's rights, and the intersection of technology and societal issues. Actively involved in awareness campaigns and advocacy for survivor support at Telkom University Surabaya, committed to creating safer and more inclusive digital spaces.",
-                content: `
-                    <p>Sexual violence continues to be a profound global issue, with countless cases remaining unreported due to fear, shame, stigma, and concerns about judgment. Online website platforms for reporting have emerged as a vital alternative, offering greater privacy, convenience, and availability around the clock. These digital tools lower the barriers to disclosure and give survivors more control over the process. While they significantly enhance accessibility and confidence, careful attention must be paid to managing risks related to data security, digital divides, and emotional well-being.</p>
+                photo: "./author2.png",
+                coverImage: "./author2.png",
+                bio: "Nur Alifia Rustan, affectionately known as Al or Alifia, is an enthusiastic Information Technology student from Pinrang, South Sulawesi, studying at Telkom University Surabaya. She enjoys relaxing through movies like Harry Potter and Enola Holmes, as well as reading books such as `Pulang` by Leila S. Chudori, which inspire her perspective and decision-making. Dreaming of becoming a successful UI/UX designer while advancing in IT, she hopes to bring her family to Surabaya and one day travel to Switzerland, cherishing rare hometown visits filled with cultural warmth and traditional cuisine.",
+                assignments: [
+                    {
+                        id: 'intro',
+                        title: "Create a Self-Introduction PARAGRAPH",
+                        type: "text",
+                        icon: "👤",
+                        color: "from-blue-500 to-blue-600",
+                        content: `
+                            <h2>Personal Introduction</h2>
+                            <p>My name is Nur Alifia Rustan, but most people call me Al or sometimes
+                            Alifia.</p>
 
-                    <grok-card data-id="d4b66c" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Hobbies and Interests</h2>
+                            <p>I have two hobbies that I enjoy the most: watching movies and reading books.
+                            Both help me relax, gain new perspectives, and learn more about the world.</p>
 
+                            <h2>Favorite Movies and Books</h2>
+                            <p>My favorite movies are Harry Potter and Enola Holmes, because I love fantasy films that
+                            make me feel alive and believe that dreams can come true.</p>
+                            <p>As for books, my favorite
+                            is Pulang by Leila S. Chudori, which has given me valuable insights and the courage
+                            to make decisions, even when I feel lost.</p>
 
-                            <h2>The Advantages of Online Reporting Platforms</h2>
-                            <p>Website-based reporting brings meaningful benefits that make the experience safer and more empowering for survivors. The option for anonymous submissions allows individuals to share their experiences without revealing personal details, helping to alleviate fears of retaliation or social repercussions.</p>
+                            <h2>Hometown and Cultural Background</h2>
+                            <p>I come from Pinrang, South Sulawesi, a place full of culture, warm people,
+                            and delicious food.</p>
 
-                            <p>With 24/7 availability, survivors can choose the moment that feels right for them, free from the constraints of office hours or institutional schedules. Features like progress tracking build trust by keeping users informed about how their report is being handled.</p>
+                            <h2>Life Away from Home</h2>
+                            <p>Since I study outside my hometown, I can only return once every
+                            two years, usually during Eid Mubarak.</p>
+                            <p>My last visit in 2025 was very special
+                            because I reunited with my family and friends.</p>
 
-                    <grok-card data-id="398fc0" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Memorable Experiences</h2>
+                            <p>I was so happy eating traditional
+                            dishes that are hard to find in Java, such as palekko, barobbo, and mie titi.</p>
+                            <p>Sharing
+                            meals, laughing with friends, and hugging my parents and sister gave me
+                            unforgettable memories.</p>
 
-
-                            <p>Many platforms also include educational resources, such as blogs and FAQs, that clarify legal definitions, rights, and types of misconduct. This guidance is especially valuable for those uncertain about their experiences. Early support through chatbots or informational tools provides a non-judgmental starting point, transforming the disclosure process into one that prioritizes privacy and autonomy.</p>
-
-                            <h2>The Risks and Challenges Involved</h2>
-                            <p>Despite their potential, digital platforms introduce important challenges that cannot be overlooked. Data security stands out as a primary concern, given the highly sensitive nature of the information shared. Any breach could have devastating consequences for survivors.</p>
-
-                    <grok-card data-id="c17df1" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <p>Recounting trauma in writing, without immediate human interaction, can sometimes heighten emotional distress and lead to incomplete submissions. Digital tools also struggle to provide the empathy and reassurance that trained professionals offer.</p>
-
-                            <p>Technical barriers, such as limited internet access, low digital literacy, or unreliable devices, disproportionately affect those in rural or underserved communities. Anonymous systems, while protective, can occasionally invite misuse, requiring extra resources for verification. These limitations highlight the need for robust infrastructure to ensure emotional safety, equitable access, and reliable protection.</p>
-
-                            <h2>Striking the Right Balance: Technology and Human Support</h2>
-                            <p>The most effective solutions combine technology with meaningful human involvement. While websites excel at initial intake, verification, counseling, and ongoing support should always involve trained professionals who can offer empathy and trauma-informed care.</p>
-
-                    <grok-card data-id="661d29" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                            <p>Hybrid approaches that blend digital convenience with personal assistance tend to inspire greater trust. Institutions should establish clear procedures, strong data protection, and comprehensive staff training. Offering multiple reporting options—anonymous, digitally supported, or in-person—ensures flexibility. Educational content must remain accessible and culturally sensitive to empower users fully.</p>
-
-                            <h2>Conclusion</h2>
-                            <p>Integrating sexual violence reporting into website platforms represents a powerful step forward, providing enhanced privacy, accessibility, and control for survivors. These tools help dismantle emotional hurdles and streamline the process, yet they also carry risks around security, distress, and inclusion that demand careful mitigation. Ultimately, technology should complement—not replace—human compassion. By prioritizing stronger cybersecurity, trauma-aware design, and blended support models, online reporting can become a truly trusted and compassionate pathway toward justice and healing.</p>
-
-                    <grok-card data-id="57ff59" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
+                            <h2>Dreams and Future Plans</h2>
+                            <p>One of my dreams is to bring my family to Surabaya, the city where I have
+                            learned so many lessons during my studies.</p>
+                            <p>Looking ahead, I plan to become a
+                            successful UI/UX designer while continuing to grow in IT.</p>
+                            <p>I hope to earn enough
+                            from this career to achieve one of my biggest dreams: traveling to Switzerland one
+                            day</p>
                         `
+                    },
+                    {
+                        id: 'review',
+                        title: "Review or Summary of a Journal Article",
+                        type: "pdf",
+                        icon: "📄",
+                        color: "from-green-500 to-green-600",
+                        pdfUrl: "https://drive.google.com/file/d/1tOsdhi-zgX5wj_Dq_cRHTH4Dd6-tQ-xH/preview"
+                    },
+                    {
+                        id: 'essay',
+                        title: "Final Written Essay Submission",
+                        type: "text",
+                        icon: "📝",
+                        color: "from-purple-500 to-purple-600",
+                        content: `
+                            <h2>Integration of Sexual Violence Reporting into Website Platforms</h2>
+                            
+                            <h2>Introduction</h2>
+                            <p>Sexual violence remains a significant global problem, with many cases going unreported due to fear, shame, stigma, and anxiety about being judged. Website-based reporting platforms have emerged as an accessible alternative because they provide privacy, speed, and availability beyond traditional office hours. These platforms reduce barriers related to in-person disclosure and increase victims’ sense of control during reporting (Heliany, 2023). However, concerns about data security, digital access, and emotional risks continue to be debated (Stevens et al., 2024). Therefore, integrating sexual violence reporting into website platforms improves accessibility and confidence but requires thoughtful risk management.</p>
+                            
+                            <h2>Body Paragraph 1 (Benefits of Website Reporting)</h2>
+                            <p>Website-based reporting offers significant advantages that make the process easier, safer, and more empowering for victims of sexual violence. Anonymous submission allows victims to report without revealing their identity, which reduces fear of retaliation and social stigma. Many victims need time to emotionally process trauma, and 24/7 access allows them to report when they are ready rather than according to institutional schedules. (Heydon et al., 2023). Progress-tracking features allow victims to follow how their reports are managed, reinforcing trust in the process. Educational blogs and guidance materials found on reporting websites also serve a key function. Many survivors are unsure whether what they experienced fits the legal definition of sexual violence. Blogs and FAQ pages help them better understand their rights, legal terms, and types of misconduct (Stevens et al., 2024). In addition, digital platforms introduce non-judgmental early support, sometimes facilitated by chatbots, which guide victims through emotional uncertainty. These benefits demonstrate that website reporting does not simply make reporting faster it reshapes the emotional experience of disclosure, offering privacy and autonomy that many victims need before they feel ready to formally engage with authorities.</p>
+                            
+                            <h2>Body Paragraph 2 (Risks and Challenges)</h2>
+                            <p>Although digital platforms improve accessibility, they also introduce critical risks and limitations. The most serious issue is data security. Reporting systems store highly sensitive information which, if leaked, could endanger victims socially, mentally, or physically. Cyber vulnerability, weak infrastructure, or poor encryption may compromise victims’ trust and case confidentiality (Putra et al., 2024). Another concern relates to emotional triggers. Recounting traumatic events through text, without immediate human support, may intensify distress. Survivors can feel overwhelmed when reliving specific details alone, leading some to abandon the process midway. Digital platforms cannot offer empathy or psychological reassurance on the same level as a trained staff member. Technical obstacles also create barriers. Limited internet access, low digital literacy, device problems, or website downtime may prevent some victims particularly those in rural or low-income areas from reporting safely. The absence of real-time guidance may lead to unclear or incomplete submissions, which delay response and verification. Furthermore, anonymous systems increase the potential for inaccurate or malicious reports, requiring institutions to allocate additional time for investigation (Stevens et al., 2024). Therefore, although digital reporting expands reach, it cannot guarantee emotional safety, equal accessibility, nor data protection without strong infrastructure, and these challenges must be addressed for online reporting to be trusted.</p>
+                            
+                            <h2>Body Paragraph 3 (Balancing Technology and Human Support)</h2>
+                            <p>Technology should assist, not replace, human roles in dealing with sexual violence. While websites facilitate report intake, case verification, counseling, and follow-up must be handled by trained professionals. Survivors require empathy, reassurance, and trauma-informed communication aspects that automated systems cannot deliver. Research highlights that hybrid models combining digital access with human support are more effective and more trusted by users (Heydon et al., 2023). To achieve this balance, institutions must implement clear SOPs, secure data protection measures, and staff training. Victims should be offered multiple pathways: fully anonymous reporting, digital reporting with support, or face-to-face assistance. Educational content within platforms should also be accessible and culturally sensitive, strengthening users’ understanding of the process and their rights. In short, website reporting improves entry to the system, but empathetic human involvement ensures victims feel respected and supported, making digital reporting a safer and more humane solution.</p>
+                            
+                            <h2>Conclusion</h2>
+                            <p>In conclusion, integrating sexual violence reporting into website platforms offers improved privacy, accessibility, and autonomy for victims. While these platforms reduce emotional barriers and streamline documentation, they also present risks involving security, emotional distress, and unequal digital access. Technology alone cannot sufficiently address the sensitive nature of sexual violence cases, making collaboration between digital tools and human expertise essential. Future developments should focus on stronger cybersecurity, trauma-informed support, and hybrid reporting models. By combining convenience with compassion, website-based reporting can evolve into a trusted and effective pathway for survivors seeking justice.</p>
+                            
+                            <h2>References</h2>
+                            <ol>
+                                <li>Heydon, G., et al. (2023). Alternative reporting options for sexual assault.</li>
+                                <li>Stevens, J., et al. (2024). A critical analysis of gender-based violence reporting systems. <em>Frontiers in Psychology</em>.</li>
+                                <li>Heliany, I. (2023). Digital platforms and women's empowerment in reporting sexual violence.</li>
+                                <li>Putra, F., et al. (2023). Cybersecurity concerns in online reporting for vulnerable populations. <em>PLOS One</em>.</li>
+                                <li>Mali, T., & Putra, F. (2023). The adaptation of digital sexual violence reporting systems. <em>Indonesian Journal of Digital Society</em>.</li>
+                            </ol>
+                        `
+                    },
+                    {
+                        id: 'slides',
+                        title: "Presentation Slides",
+                        type: "pdf",
+                        icon: "🎤",
+                        color: "from-orange-500 to-orange-600",
+                        pdfUrl: "https://drive.google.com/file/d/1u0-PqT7BxIpyVCwz6znKQz7AVA-6Zvlm/preview"
+                    }
+                ]
             },
             3: {
-                title: "The Positive Impact of Artificial Intelligence on Human Life, Especially in Education",
-                author: "Hardiyanto Pratama",
+                name: "Ardine Hardiyanto Pratama",
                 nim: "1202230012",
                 class: "IT-05-02",
-                category: "Education",
-                categoryColor: "bg-green-100 text-green-700",
-                cardCover: "https://ce.fresno.edu/media/t5jpb3qz/fpu_ai-in-the-classroom.jpg?width=800&height=600", // Vibrant classroom with students using AI tools – positive and engaging (cropped to approx 4:3)
-                articleCover: "https://media.wired.com/photos/668d9761f48e4b3cc92f60e6/16:9/w_1920,h_1080,c_limit/AI-Classroom-Culture-1516288091.jpg", // Wide, inspiring image of AI enhancing classroom learning (16:9 ratio)
-                authorPhoto: "./author3.png", // You can replace with ./author3.png if available locally
-                bio: "An enthusiastic Information Technology student fascinated by artificial intelligence and its real-world applications. Particularly passionate about how AI is revolutionizing education, making learning more personalized and accessible for everyone at Telkom University Surabaya.",
-                content: `
-                    <p>Artificial Intelligence is quietly reshaping our daily lives—from smarter navigation apps to personalized recommendations and advanced healthcare tools. Yet, nowhere is its positive impact more exciting than in education. AI is making learning more accessible, engaging, and tailored to individual needs, breaking down barriers that once limited opportunities for millions.</p>
+                photo: "./author3.png",
+                coverImage: "./author3.png",
+                bio: "Ardine Hardiyanto Pratama is a motivated Information Technology student (class of 2023) at Telkom University Surabaya, drawn to the field by his fascination with technology's rapid evolution and its potential to create societal solutions. He embraces challenges in programming, system design, and industry applications as valuable learning opportunities, while maintaining balance through sports like running, volleyball, and riding, which foster discipline and teamwork. Aiming for a professional career in software development and IoT, he envisions working at an innovative company that delivers real-world benefits.",
+                assignments: [
+                    {
+                        id: 'intro',
+                        title: "Create a Self-Introduction PARAGRAPH",
+                        type: "text",
+                        icon: "👤",
+                        color: "from-blue-500 to-blue-600",
+                        content: `
+                            <h2>Personal Introduction</h2>
+                            <p>My name is Ardine Hardiyanto Pratama. I am currently studying at Telkom University Surabaya,
+                            majoring in Information Technology, class of 2023.</p>
 
-                <grok-card data-id="6e8f0f" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Motivation and Interest in Technology</h2>
+                            <p>From the beginning, I chose this field
+                            because I have always been interested in the rapid development of technology and its role in
+                            changing people’s lives.</p>
+                            <p>I believe that by understanding technology, I can contribute to creating
+                            solutions that are useful for society.</p>
 
+                            <h2>Academic Journey</h2>
+                            <p>During my studies, I learn many things, ranging from programming, system design, to the
+                            application of technology in industry.</p>
+                            <p>The courses that I take require accuracy, creativity, and
+                            logical thinking skills.</p>
+                            <p>Although I often face challenges, I always try to stay motivated and
+                            consider them as valuable learning experiences.</p>
 
+                            <h2>Hobbies and Personal Life</h2>
+                            <p>Besides studying, I also have hobbies in sports.</p>
+                            <p>I really enjoy running, playing volleyball, and
+                            riding.</p>
+                            <p>For me, sports are not only about keeping the body healthy but also about practicing
+                            discipline, teamwork, and maintaining balance between academic activities and personal life.</p>
 
-                <grok-card data-id="6291c5" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <h2>Making Learning Truly Personal</h2>
-                        <p>One of the greatest gifts AI brings to education is personalization. Traditional classrooms often move at a single pace, leaving some students struggling and others bored. AI-powered platforms adapt in real time, adjusting difficulty, offering explanations in different styles, and providing instant feedback.</p>
-
-                <grok-card data-id="a14d73" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <p>Students can learn at their own speed, revisit tough concepts without embarrassment, and receive support tailored to their unique challenges—whether that's visual aids, simplified language, or extra practice. This approach not only deepens understanding but also builds confidence and keeps motivation high.</p>
-
-                        <h2>Boosting Efficiency for Everyone</h2>
-                        <p>AI doesn't just help students—it lightens the load for teachers too. By automating routine tasks like grading assignments, tracking progress, and generating reports, AI frees educators to focus on what they do best: inspiring students, leading discussions, and offering meaningful guidance.</p>
-
-                <grok-card data-id="6110e0" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-
-                <grok-card data-id="19788b" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <p>Interactive tools, virtual simulations, and gamified lessons make classes more engaging, while analytics help teachers spot who needs extra support early on. Plus, AI enables learning anytime, anywhere—perfect for those in remote areas or with busy schedules.</p>
-
-                        <h2>Finding the Right Balance</h2>
-                        <p>Of course, no technology is perfect. Some worry that too much AI might reduce face-to-face interaction or encourage over-reliance, potentially affecting social skills or critical thinking. There's also the risk of inaccuracies if not carefully managed.</p>
-
-                <grok-card data-id="319f28" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-
-                <grok-card data-id="988847" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <p>The key is balance: using AI as a powerful assistant rather than a replacement for human connection, creativity, and mentorship.</p>
-
-                        <h2>Conclusion</h2>
-                        <p>AI is proving to be a force for good in education and beyond, opening doors to better learning experiences and more equitable opportunities. When used thoughtfully, it enhances human potential without diminishing the essential role of teachers and peers. The future of education looks brighter than ever—thanks to smart technology working hand-in-hand with human inspiration.</p>
-                    `
+                            <h2>Dreams and Future Goals</h2>
+                            <p>My dream in the future is to become a professional in the field of information technology,
+                            especially in software development and the application of the Internet of Things (IoT).</p>
+                            <p>I hope
+                            that one day I can work in a large company that prioritizes innovation while also giving real
+                            benefits to society.</p>
+                            <p>With strong motivation and support from people around me, I am confident
+                            that my dream can come true.</p>
+                        `
+                    },
+                    {
+                        id: 'review',
+                        title: "Review or Summary of a Journal Article",
+                        type: "pdf",
+                        icon: "📄",
+                        color: "from-green-500 to-green-600",
+                        pdfUrl: "https://drive.google.com/file/d/157shZ1yFVGUsxayXd0k51UZijELgnX1X/preview"
+                    },
+                    {
+                        id: 'essay',
+                        title: "Final Written Essay Submission",
+                        type: "text",
+                        icon: "📝",
+                        color: "from-purple-500 to-purple-600",
+                        content: `
+                                <h2>The Positive Impact of Artificial Intelligence on Human Life, Especially in Education</h2>
+                                
+                                <p>Artificial Intelligence has emerged as one of the most revolutionary technological advancements shaping contemporary human experiences. Nowadays, AI plays a role in everyday tasks such as communication, transportation, banking, healthcare, business processes, and accessing information. Nonetheless, education is one area where AI has had a particularly notable and quantifiable effect, as technological resources increasingly assist students, educators, and learning settings. In the last ten years, AI-powered learning platforms, adaptive teaching systems, virtual tutoring solutions, and automated evaluation tools have changed how students absorb information and how teachers provide education. Consequently, learning has become more attainable, adaptable, and tailored for individuals globally. Many people perceive AI as a significant innovation that boosts academic progress and broadens access to educational materials, particularly for those who once encountered obstacles due to distance, language differences, or financial challenges. Conversely, some detractors express concerns that AI diminishes human connection, fosters reliance, and undermines traditional educational principles that depend on personal interaction. Regardless of these contrasting views, AI has a beneficial influence on people's lives, particularly in education, as it enhances the effectiveness and availability of learning opportunities, even though worries about dependency and diminished human connection remain.</p>
+                                
+                                <h2>Enhancing Comprehension and Personalized Learning</h2>
+                                <p>One significant way that AI positively impacts education is by enhancing how easily students grasp information. Numerous students encounter difficulties when dealing with school subjects, particularly if the content is complicated, theoretical, or unfamiliar. Learning tools driven by AI can clarify explanations, offer visual aids, translate materials, and modify the level of challenge based on individual student requirements. This tailored method allows learners to progress at their own speed, which strengthens comprehension more effectively than traditional classroom teaching that typically adopts a uniform approach. Additionally, AI provides immediate feedback, helping students recognize and rectify errors right away. This promptness boosts understanding, fosters motivation, and diminishes feelings of frustration. Students facing challenges with reading, language issues, or learning difficulties can also gain from AI capabilities, such as converting speech to text, personalized reading assistance, and structured support. By enhancing cognitive growth, AI encourages learning and helps realize human capabilities, showcasing how technology meaningfully enriches the educational experience and can lead to better long-term learning results.</p>
+                                
+                                <h2>Improving Efficiency for Students and Educators</h2>
+                                <p>Another important positive effect of AI on education is its capability to enhance the efficiency of learning for both students and educators. For teachers, AI has the potential to take over routine administrative responsibilities such as grading papers, assessing student performance, tracking attendance, organizing teaching materials, and creating educational reports. This alleviates the burden on teachers, enabling them to concentrate on meaningful activities like mentoring, facilitating discussions, providing emotional assistance, and helping students cultivate values and character. Furthermore, AI can evaluate student performance data and offer valuable insights that assist teachers in developing improved instructional methods tailored to the needs of individuals or groups. In classroom environments, AI-driven tools can foster interactive and captivating learning settings that keep students engaged and involved. Tools such as virtual simulations, gamified education, intelligent whiteboards, and personalized quizzes contribute to maintaining student interest and boosting information retention. For learners, AI promotes learning at their own pace, enabling them to study whenever and wherever they choose, thus broadening educational access beyond constraints like school hours, transportation issues, or geographical isolation. This enhanced efficiency positively impacts life by boosting productivity, minimizing educational obstacles, encouraging lifelong learning, and improving overall academic success.</p>
+                                
+                                <h2>Addressing Concerns: Over-Reliance and Reduced Human Interaction</h2>
+                                <p>However, the growing implementation of AI in education brings up worries about diminished social engagement and an increasing reliance on technology, which might impact human social and cognitive growth. When learners depend excessively on AI resources, they could become less adept at critical thinking, independently resolving issues, or creatively conveying their ideas. Traditional learning environments promote collaboration, communication, empathy, teamwork, and interpersonal skills that are vital for building relationships and achieving professional success. If AI takes over too much of this interaction, students might find their emotional bonds weakening, their social abilities diminishing, and their real-world involvement shrinking. Additionally, reliance on AI might stifle creativity, as students might regularly opt for automated responses instead of developing their own ideas or thinking deeply. There are instances where AI systems could offer inaccurate information, biased suggestions, or insufficient explanations, potentially misguiding students who lean too much on technology without questioning or critically assessing the material. These issues underscore the necessity for a balanced and careful approach to employing AI so that technology enhances, rather than substitutes, crucial human learning experiences.</p>
+                                
+                                <h2>Conclusion</h2>
+                                <p>In summary, artificial intelligence has a notable and beneficial influence on people's lives, especially within education, as it improves learning outcomes, facilitates customized teaching, boosts educational productivity, and broadens access to information. While there are valid worries regarding over-reliance and diminished social engagement, these issues can be addressed with careful and sensible technology use. When applied wisely, AI can augment human capabilities, boost intellectual and academic advancement, and aid in building a more knowledgeable, skilled, and interconnected global community. Thus, the essential approach to optimizing AI's advantages in education is to utilize it as a supportive resource that empowers both students and teachers while maintaining vital human connections, creativity, and critical thinking. AI should complement human functions instead of replacing them, ensuring that education remains a space for both technological advancement and human growth.</p>
+                            `
+                        },
+                    {
+                        id: 'slides',
+                        title: "Presentation Slides",
+                        type: "pdf",
+                        icon: "🎤",
+                        color: "from-orange-500 to-orange-600",
+                        pdfUrl: "https://drive.google.com/file/d/1DqO4pKL4q9XZn1rscTxUdHUtZTDYRPri/preview"
+                    }
+                ]
             },
             4: {
-                title: "How Online Games Enhance Creativity",
-                author: "Hikmah Khaliq A. P.",
+                name: "Hikmah Khaliq A. P.",
                 nim: "1202230011",
                 class: "IT-05-02",
-                category: "Gaming",
-                categoryColor: "bg-orange-100 text-orange-700",
-                cardCover: "https://player-ready.co.uk/wp-content/uploads/2023/08/Here-Is-How-Minecraft-Coding-Turns-Kids-From-Gamers-To-Creators.png", // Vibrant image showing Minecraft turning gamers into creators – perfect for card (ratio close to 4:3)
-                articleCover: "https://blog-uploads.eneba.games/uploads/2025/08/roblox-vs-minecraft.jpg", // Colorful Roblox vs Minecraft comparison – wide, engaging featured image highlighting creative sandbox games
-                authorPhoto: "./author4.png", // You can replace with ./author3.png if available locally
-                bio: "A gaming enthusiast and Information Technology student passionate about the positive impact of video games on learning and creativity. Exploring how digital entertainment can develop skills like problem-solving, imagination, and strategic thinking at Telkom University Surabaya.",
-                content: `
-                    <p>Millions of teenagers dive into online games every day on their phones, computers, or consoles. While some view gaming as a mere time-waster or potential addiction, the reality is far more nuanced. Beneath the thrilling graphics and intense gameplay lies a powerful tool for mental growth. Online games challenge players to adapt, innovate, and think flexibly, turning entertainment into an unexpected booster for creativity.</p>
+                photo: "./author4.png",
+                coverImage: "./author4.png",
+                bio: "Hikmah Khaliq A. P. is a passionate Information Technology student at Telkom University Surabaya, deeply interested in the intersection of gaming, education, and technology. Viewing games as powerful tools for developing problem-solving, strategic thinking, creativity, and collaboration—especially through sandbox titles—he focuses on game design and gamification to enhance cognitive growth. His career goal is to contribute to the gaming industry by creating entertaining yet educational experiences that promote personal development and learning.",
+                assignments: [
+                    {
+                        id: 'intro',
+                        title: "Create a Self-Introduction PARAGRAPH",
+                        type: "text",
+                        icon: "👤",
+                        color: "from-blue-500 to-blue-600",
+                        content: `
+                            <h2>Meet Hikmah Khaliq A. P.</h2>
+                            <p>Hi there! I'm Hikmah Khaliq A. P., studying Information Technology at Telkom University Surabaya with NIM 1202230011 in class IT-05-02. I'm passionate about exploring the intersection of gaming, education, and technology.</p>
+                            
+                            <h2>Beyond Just Entertainment</h2>
+                            <p>While many view gaming purely as entertainment, I see it as a powerful medium for learning and skill development. Games teach problem-solving, strategic thinking, creativity, and collaboration—skills essential for the modern world.</p>
+                            
+                            <h2>My Research Interests</h2>
+                            <p>I focus on game design, educational gaming (gamification), and how interactive digital experiences can enhance cognitive development. I'm particularly interested in sandbox games and how they foster creativity and innovation.</p>
+                            
+                            <h2>Career Goals</h2>
+                            <p>I aim to contribute to the gaming industry by developing experiences that are both entertaining and educational, proving that games can be powerful tools for personal growth and learning.</p>
+                        `
+                    },
+                    {
+                        id: 'review',
+                        title: "Review or Summary of a Journal Article",
+                        type: "pdf",
+                        icon: "📄",
+                        color: "from-green-500 to-green-600",
+                        pdfUrl: "https://drive.google.com/file/d/1NoAPFDptOWQO16tOJG8lXaNRoq_-JywD/preview"
+                    },
+                    {
+                        id: 'essay',
+                        title: "Essay",
+                        type: "text",
+                        icon: "📝",
+                        color: "from-purple-500 to-purple-600",
+                        content: `
+                            <h2>The Educational Value of Video Games</h2>
+                            
+                            <p>Video games have often been dismissed as mere entertainment or even criticized as time-wasters that distract from "real" learning. However, research increasingly demonstrates that well-designed games can be powerful educational tools that develop critical cognitive skills and prepare players for complex real-world challenges.</p>
 
-                    <h2>Sharpening Problem-Solving Skills</h2>
-                    <p>One of the biggest ways online games fuel creativity is through constant problem-solving. Most games are packed with missions, puzzles, and obstacles that demand unique approaches each time. Players learn to analyze situations, experiment with different tactics, and embrace trial-and-error without fear of failure.</p>
+                            <h2>Problem-Solving and Critical Thinking</h2>
+                            <p>Games constantly present players with problems requiring analysis, experimentation, and solution development. Players must observe patterns, form hypotheses, test strategies, and learn from failures—mirroring the scientific method and critical thinking processes valued in education and professional contexts.</p>
 
-                <grok-card data-id="c52ef2" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <p>Strategy games, in particular, develop planning skills and teach players to consider multiple variables, predict outcomes, and adapt approaches based on changing circumstances.</p>
 
+                            <h2>Creativity and Innovation</h2>
+                            <p>Sandbox games like Minecraft and Roblox provide open-ended environments where players become creators rather than mere consumers. These platforms encourage experimentation, artistic expression, and innovative problem-solving within defined rule systems.</p>
 
-                        <p>When a level proves tough, gamers might switch gear, tweak strategies, or team up for fresh ideas. This cycle of observing, testing, and refining mirrors real-world creative processes and builds resilience that applies to school projects, hobbies, and everyday challenges.</p>
+                            <p>Players learn basic programming concepts, spatial reasoning, and design principles while pursuing creative projects that matter to them personally—a powerful motivator for learning.</p>
 
-                        <h2>Igniting Imagination and World-Building</h2>
-                        <p>Online games also unlock boundless imagination, especially in sandbox-style titles. Players get to design characters, craft environments, build homes, cities, or entirely new worlds from scratch.</p>
+                            <h2>Collaboration and Communication</h2>
+                            <p>Multiplayer games require teamwork, communication, and coordination. Players must articulate strategies, delegate responsibilities, provide feedback, and work toward common goals—all essential professional skills.</p>
 
-                <grok-card data-id="e18910" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
+                            <h2>Responsible Gaming</h2>
+                            <p>While games offer significant benefits, balance is crucial. Excessive gaming can interfere with other important activities. The key is approaching games as one component of a well-rounded lifestyle that includes physical activity, social interaction, and diverse learning experiences.</p>
 
+                            <h2>Conclusion</h2>
+                            <p>Video games, when designed thoughtfully and played responsibly, can be valuable educational tools that develop problem-solving, creativity, and collaboration skills. By recognizing and harnessing their potential, we can better prepare young people for an increasingly complex and technological world.</p>
 
-
-                <grok-card data-id="459365" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <p>Games like Minecraft or Roblox hand over unlimited freedom, letting players experiment with shapes, colors, and functionality. This hands-on creation sparks skills in art, design, and storytelling, encouraging players to turn wild ideas into tangible digital masterpieces.</p>
-
-                        <h2>Fostering Strategic and Innovative Thinking</h2>
-                        <p>Many online games demand careful planning, resource management, and quick decisions in dynamic environments. In multiplayer titles, players craft unique strategies, coordinate with teammates, and innovate to outsmart opponents.</p>
-
-                <grok-card data-id="d55711" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-
-                <grok-card data-id="5c0e59" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-
-                        <p>This blend of analysis and creativity hones communication, collaboration, and forward-thinking—essential traits for innovation in any field.</p>
-
-                        <h2>Conclusion</h2>
-                        <p>Far from being just entertainment, online games can be a surprising ally in nurturing creativity among young people. By honing problem-solving, sparking imagination, and building strategic minds, they equip players with valuable skills for life. Played responsibly and in moderation, these digital worlds can inspire confidence, critical thinking, and a lifelong love for creative exploration.</p>
-
-                <grok-card data-id="4e0a86" data-type="image_card"  data-arg-size="LARGE" ></grok-card>
-
-                    `
+                            <h2>References</h2>
+                            <ol>
+                                <li>Gee, J. P. (2003). What Video Games Have to Teach Us About Learning and Literacy. Palgrave Macmillan.</li>
+                                <li>Squire, K. (2011). Video Games and Learning: Teaching and Participatory Culture in the Digital Age. Teachers College Press.</li>
+                                <li>Granic, I., Lobel, A., & Engels, R. C. (2014). The benefits of playing video games. <em>American Psychologist</em>, 69(1), 66-78.</li>
+                            </ol>
+                        `
+                    },
+                    {
+                        id: 'slides',
+                        title: "Presentation Slides",
+                        type: "pdf",
+                        icon: "🎤",
+                        color: "from-orange-500 to-orange-600",
+                        pdfUrl: "https://drive.google.com/file/d/1Dfw4X3tdc5_Ui2uZDUW4VzdODUDrH65c/preview"
+                    }
+                ]
             }
         };
 
-        function showArticle(id) {
-            const article = articles[id];
+        function showStudentPortfolio(studentId) {
+            currentStudentId = studentId;
+            const student = studentsData[studentId];
             
-            // Update article content
-            document.getElementById('article-title').textContent = article.title;
-            document.getElementById('article-author').textContent = `By ${article.author}`;
-            document.getElementById('article-body').innerHTML = article.content;
-            document.getElementById('article-category').textContent = article.category;
-            document.getElementById('article-category').className = `inline-block px-4 py-2 rounded-full text-sm font-semibold ${article.categoryColor}`;
-            
-            // Update article cover image
-            document.getElementById('article-cover').src = article.articleCover;
-            document.getElementById('article-cover').alt = `${article.title} Cover`;
-            
-            // Update author section
-            document.getElementById('author-name').textContent = article.author;
-            document.getElementById('author-nim').innerHTML = `
+            document.getElementById('student-photo').src = student.photo;
+            document.getElementById('student-name').textContent = student.name;
+            document.getElementById('student-nim').innerHTML = `
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
                 </svg>
-                NIM: ${article.nim}
+                NIM: ${student.nim}
             `;
-            document.getElementById('author-class').innerHTML = `
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                </svg>
-                Class: ${article.class}
-            `;
-            document.getElementById('author-bio').textContent = article.bio;
+            document.getElementById('student-bio').textContent = student.bio;
             
-            // Update author photo
-            document.getElementById('author-photo').src = article.authorPhoto;
-            document.getElementById('author-photo').alt = `${article.author} Photo`;
+            const assignmentCardsContainer = document.getElementById('assignment-cards');
+            assignmentCardsContainer.innerHTML = student.assignments.map((assignment, index) => `
+                <div class="card-hover bg-gradient-to-br ${assignment.color} text-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition-all" onclick="showAssignment(${studentId}, ${index})">
+                    <div class="p-8 relative">
+                        <div class="absolute top-4 right-4 opacity-20">
+                            <div class="text-8xl">${assignment.icon}</div>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="text-5xl mb-6">${assignment.icon}</div>
+                            <h3 class="text-2xl font-bold mb-3 leading-tight">${assignment.title}</h3>
+                            <div class="inline-flex items-center text-sm font-medium bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+                                ${assignment.type === 'pdf' ? '📖 Read More' : '📖 Read More'}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
             
-            // Switch pages
             document.getElementById('landing-page').classList.add('hidden');
-            document.getElementById('article-page').classList.remove('hidden');
-            document.getElementById('article-page').classList.add('fade-in');
-            
-            // Scroll to top
+            document.getElementById('portfolio-page').classList.remove('hidden');
+            document.getElementById('portfolio-page').classList.add('fade-in');
+            window.scrollTo(0, 0);
+        }
+
+        async function showAssignment(studentId, assignmentIndex) {
+            const student = studentsData[studentId];
+            const assignment = student.assignments[assignmentIndex];
+
+            // Set judul dan author
+            document.getElementById('assignment-title').textContent = assignment.title;
+            document.getElementById('assignment-author').textContent = `By ${student.name}`;
+
+            const contentContainer = document.getElementById('assignment-content');
+
+            // Jika assignment adalah PDF (Review Journal atau Slides)
+            if (assignment.type === 'pdf') {
+                // Pastikan pdfUrl adalah link Google Drive dengan format /preview
+                // Contoh: https://drive.google.com/file/d/ABC123xyz/preview
+
+                // Link untuk tombol download (ubah /preview jadi /view?usp=sharing)
+                const downloadUrl = assignment.pdfUrl.replace('/preview', '/view?usp=sharing');
+
+                contentContainer.innerHTML = `
+                    <div class="text-center mb-10">
+                        <div class="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-2xl mb-6">
+                            <svg class="w-10 h-10 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                            ${assignment.title === "Review or Summary of a Journal Article" ? "Journal Review / Summary" : "Presentation Slides"}
+                        </h3>
+                        <p class="text-lg text-gray-600">Gunakan scroll untuk membaca dokumen PDF di bawah ini</p>
+                    </div>
+
+                    <!-- PDF Viewer dari Google Drive -->
+                    <div class="pdf-container mb-12 rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-100">
+                        <iframe 
+                            src="${assignment.pdfUrl}" 
+                            style="width:100%; height:900px; border:none;"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Tombol Download -->
+                    <div class="text-center">
+                        <a href="${downloadUrl}" 
+                        target="_blank" 
+                        class="inline-flex items-center px-10 py-5 bg-gradient-to-r from-red-600 to-red-700 text-white text-lg font-bold rounded-2xl hover:from-red-700 hover:to-red-800 transition-all shadow-2xl hover:shadow-red-300 transform hover:-translate-y-1">
+                            <svg class="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download PDF dari Google Drive
+                        </a>
+                    </div>
+                `;
+            } 
+            // Jika assignment adalah teks (Self-Introduction, Essay, Blog)
+            else {
+                contentContainer.innerHTML = `
+                    <div class="article-content prose prose-lg max-w-none lg:prose-xl">
+                        ${assignment.content}
+                    </div>
+                `;
+            }
+
+            // Pindah halaman
+            document.getElementById('portfolio-page').classList.add('hidden');
+            document.getElementById('assignment-page').classList.remove('hidden');
+            document.getElementById('assignment-page').classList.add('fade-in');
+
+            // Scroll ke atas
+            window.scrollTo(0, 0);
+        }
+
+        function backToPortfolio() {
+            document.getElementById('assignment-page').classList.add('hidden');
+            document.getElementById('portfolio-page').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
 
         function backToHome() {
-            document.getElementById('article-page').classList.add('hidden');
+            document.getElementById('portfolio-page').classList.add('hidden');
+            document.getElementById('assignment-page').classList.add('hidden');
             document.getElementById('landing-page').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
-
-        // Initialize card images on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            // This ensures all images are properly loaded
-            console.log('Page loaded successfully');
-        });
     </script>
 </body>
 </html>
